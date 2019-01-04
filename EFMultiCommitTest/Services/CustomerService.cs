@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace EFMultiCommitTest.Services
 {
-    public class CustomerServices : IDisposable
+    public class CustomerService : IDisposable
     {
         private DbContext baseContext { get; set; }
 
-        public CustomerServices()
+        public CustomerService()
         {
             baseContext = new ProjDBEntities();
         }
@@ -27,6 +27,15 @@ namespace EFMultiCommitTest.Services
                 throw new ArgumentNullException("instance");
 
             this.baseContext.Set<Customer>().Add(instance);
+        }
+
+        /// <summary>
+        /// 取得所有資料
+        /// </summary>
+        /// <returns>table entity object collection</returns>
+        public IQueryable<Customer> GetDataAll()
+        {
+            return this.baseContext.Set<Customer>().AsQueryable();
         }
 
         /// <summary>
