@@ -26,5 +26,6 @@ namespace EFMultiCommitTest.Entities
         }
     
         public DbSet<Customer> Customer { get; set; }
+        public DbSet<UserMain> UserMain { get; set; }
     }
 }

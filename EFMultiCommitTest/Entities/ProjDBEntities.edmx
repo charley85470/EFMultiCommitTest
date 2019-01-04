@@ -26,8 +26,22 @@
           <Property Name="UpdateIp" Type="nvarchar" MaxLength="50" />
           <Property Name="CustomerLevel" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="UserMain">
+          <Key>
+            <PropertyRef Name="sn" />
+          </Key>
+          <Property Name="sn" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserNameE" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tel" Type="nvarchar" MaxLength="30" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="30" />
+          <Property Name="Email" Type="nvarchar" MaxLength="250" />
+          <Property Name="AgentID" Type="nvarchar" MaxLength="50" />
+          <Property Name="AgentDateStart" Type="datetime" />
+          <Property Name="AgentDateEnd" Type="datetime" />
+        </EntityType>
         <EntityContainer Name="ProjDBModelStoreContainer">
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserMain" EntityType="Self.UserMain" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -35,6 +49,7 @@
       <Schema Namespace="ProjDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="ProjDBEntities" annotation:LazyLoadingEnabled="true" >
           <EntitySet Name="Customer" EntityType="ProjDBModel.Customer" />
+          <EntitySet Name="UserMain" EntityType="ProjDBModel.UserMain" />
         </EntityContainer>
         <EntityType Name="Customer">
           <Key>
@@ -56,6 +71,19 @@
           <Property Name="UpdateDate" Type="DateTime" Precision="3" />
           <Property Name="UpdateIp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CustomerLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserMain">
+          <Key>
+            <PropertyRef Name="sn" />
+          </Key>
+          <Property Name="sn" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserNameE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tel" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="AgentID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AgentDateStart" Type="DateTime" Precision="3" />
+          <Property Name="AgentDateEnd" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -82,6 +110,20 @@
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="Company" ColumnName="Company" />
                 <ScalarProperty Name="CustomerSN" ColumnName="CustomerSN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMain">
+            <EntityTypeMapping TypeName="ProjDBModel.UserMain">
+              <MappingFragment StoreEntitySet="UserMain">
+                <ScalarProperty Name="AgentDateEnd" ColumnName="AgentDateEnd" />
+                <ScalarProperty Name="AgentDateStart" ColumnName="AgentDateStart" />
+                <ScalarProperty Name="AgentID" ColumnName="AgentID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="UserNameE" ColumnName="UserNameE" />
+                <ScalarProperty Name="sn" ColumnName="sn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -84,6 +84,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ProjDBEntities.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Entities\UserMain.cs">
+      <DependentUpon>ProjDBEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CustomerService.cs" />
@@ -100,9 +103,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\ProjDB.mdf" />
+    <Content Include="App_Data\ProjDB.mdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="App_Data\ProjDB_log.ldf">
       <DependentUpon>ProjDB.mdf</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Entities\ProjDBEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
