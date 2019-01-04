@@ -10,6 +10,7 @@ namespace EFMultiCommitTest
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
